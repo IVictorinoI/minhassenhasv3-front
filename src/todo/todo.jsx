@@ -23,14 +23,14 @@ export default class Todo extends Component {
         this.handleMarkAsPending = this.handleMarkAsPending.bind(this)
         this.handleRemove = this.handleRemove.bind(this)
 
-        axios.defaults.headers.common['authorization'] = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlZpY3RvciAyIiwicm9sZSI6IkRlZmF1bHRSb2xlIiwiSWQiOiIxIiwibmJmIjoxNjA3Mzg1MDY3LCJleHAiOjE2MDczOTIyNjcsImlhdCI6MTYwNzM4NTA2N30.mmtLCNh9J2MUjXyEKA-qVYaeVnYTs-MWkJzm6-L2P4M'
+        axios.defaults.headers.common['authorization'] = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IlZpY3RvciAyIiwicm9sZSI6IkRlZmF1bHRSb2xlIiwiSWQiOiIxIiwibmJmIjoxNjA3NDQyMjQ0LCJleHAiOjE2MDc2MTUwNDQsImlhdCI6MTYwNzQ0MjI0NH0.0mLDPkH20UENLuCSCpETbTKGLCxGlcagazNetb7nWNE'
 
         this.refresh()
     }
 
     refresh(description = '') {
         const search = description ? `&description__regex=/${description}/` : ''
-        axios.get(`${URL}`)
+        axios.get(`${URL}?${search}`)
             .then(resp => this.setState({...this.state, description, list: resp.data}))
     }
 
